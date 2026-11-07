@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#526f59"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>Maison ❤️</title>
+<style>
+:root{--green:#526f59;--deep:#304b38;--sage:#e7eee4;--cream:#f8f7f1;--card:#fff;--muted:#778276;--line:#e6e9e1;--orange:#c58a54}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:#26352a;font:15px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}header{background:var(--green);color:white;padding:calc(18px + env(safe-area-inset-top)) 20px 20px;border-radius:0 0 24px 24px}header .top{display:flex;justify-content:space-between;align-items:center}h1{font-size:25px;margin:0;font-weight:750}header p{margin:7px 0 0;color:#e2ebe0;font-size:13px}.wrap{max-width:760px;margin:auto;padding:17px 15px 95px}.welcome{background:var(--sage);border-radius:18px;padding:16px;margin-bottom:18px}.welcome strong{font-size:16px}.welcome p{margin:5px 0 0;color:#657565;font-size:13px}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}.tile{border:0;background:white;border-radius:17px;padding:17px;text-align:left;box-shadow:0 2px 10px #2635220b;min-height:112px;color:var(--deep)}.tile .ico{font-size:25px;display:block;margin-bottom:12px}.tile b{display:block;font-size:15px}.tile small{color:var(--muted);display:block;margin-top:4px}.section{display:none}.section.active{display:block}.section-head{display:flex;align-items:center;justify-content:space-between;margin:5px 0 15px}.section h2{font-size:22px;margin:0;color:var(--deep)}button,.btn{cursor:pointer;border:0;border-radius:12px;padding:11px 14px;background:var(--green);color:white;font-weight:650;font-size:14px}.btn.secondary{background:var(--sage);color:var(--deep)}.btn.small{padding:8px 10px;font-size:12px}.card{background:white;border-radius:16px;padding:15px;margin:10px 0;box-shadow:0 2px 10px #26352208}.row{display:flex;align-items:center;gap:10px}.between{justify-content:space-between}.muted{color:var(--muted);font-size:13px}.pill{background:var(--sage);color:var(--deep);border-radius:30px;padding:5px 9px;font-size:11px}.item{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--line)}.item:last-child{border:0}.item input[type=checkbox]{width:19px;height:19px;accent-color:var(--green)}.item .grow{flex:1}.done{text-decoration:line-through;color:#9aa398}input,select,textarea{width:100%;border:1px solid var(--line);border-radius:11px;padding:11px;background:#fff;font:inherit;color:#26352a}label{display:block;font-size:12px;color:var(--muted);margin:10px 0 5px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);display:flex;justify-content:space-around;padding:9px 3px calc(9px + env(safe-area-inset-bottom));z-index:3}.nav button{background:transparent;color:#758174;padding:6px 5px;font-size:10px;flex:1}.nav button span{display:block;font-size:19px;margin-bottom:3px}.nav button.active{color:var(--green);font-weight:800}.empty{text-align:center;padding:25px;color:var(--muted)}.budget{font-size:26px;font-weight:800;color:var(--deep)}.bar{height:8px;background:var(--sage);border-radius:9px;overflow:hidden;margin:9px 0}.bar i{display:block;height:100%;background:var(--green);width:0}.hidden{display:none!important}.back{background:transparent;color:var(--green);padding:0 0 12px}.hint{background:#fff8ed;color:#785b37;padding:12px;border-radius:12px;font-size:12px;line-height:1.4}
+</style>
+</head>
+<body>
+<header><div class="top"><h1>Maison ❤️</h1><span style="font-size:24px">🌿</span></div><p>Notre maison, notre organisation.</p></header>
+<main class="wrap">
+<section id="home" class="section active">
+<div class="welcome"><strong>Bienvenue chez vous ❤️</strong><p>Une petite chose après l'autre, pour une semaine plus légère.</p></div>
+<div class="section-head"><h2>Notre espace</h2><span class="pill" id="today"></span></div>
+<div class="grid">
+<button class="tile" onclick="show('planning')"><span class="ico">🗓️</span><b>Ma semaine</b><small>Planning et tâches</small></button>
+<button class="tile" onclick="show('menus')"><span class="ico">🍽️</span><b>Mes menus</b><small>Repas et recettes</small></button>
+<button class="tile" onclick="show('courses')"><span class="ico">🛒</span><b>Mes courses</b><small>Liste et budget</small></button>
+<button class="tile" onclick="show('stock')"><span class="ico">🥫</span><b>Mon stock</b><small>Aliments disponibles</small></button>
+<button class="tile" onclick="show('recettes')"><span class="ico">📖</span><b>Recettes favorites</b><small>Nos idées repas</small></button>
+<button class="tile" onclick="show('maison')"><span class="ico">🧽</span><b>Entretien maison</b><small>Tâches et produits</small></button>
+</div>
+<div class="card"><div class="row between"><b>Cette semaine</b><span class="muted" id="progressText">0 tâche terminée</span></div><div class="bar"><i id="progressBar"></i></div><div class="muted">Les tâches cochées seront comptabilisées ici.</div></div>
+<div class="hint">Prototype : les données sont enregistrées sur cet appareil. Pour partager automatiquement les modifications entre vos deux iPhone, il faudra ensuite connecter une base de données en ligne.</div>
+</section>
+<section id="planning" class="section">
+<div class="section-head"><h2>Notre semaine</h2><button onclick="addTask()">+ Ajouter</button></div>
+<div class="card"><div class="muted">Tâches à faire et répartition entre vous deux.</div><div id="tasks"></div></div>
+</section>
+<section id="menus" class="section">
+<div class="section-head"><h2>Menus de la semaine</h2><button onclick="addMeal()">+ Repas</button></div>
+<div class="card"><div class="muted">Ajoutez vos repas pour organiser la semaine.</div><div id="meals"></div></div>
+</section>
+<section id="courses" class="section">
+<div class="section-head"><h2>Liste de courses</h2><button onclick="addGrocery()">+ Produit</button></div>
+<div class="card"><div class="row between"><div><div class="muted">Budget prévu</div><div class="budget"><span id="budgetDisplay">120</span> CHF</div></div><button class="btn secondary small" onclick="setBudget()">Modifier</button></div><div class="bar"><i id="budgetBar"></i></div><div class="muted" id="spentText">0 CHF dépensé</div></div>
+<div class="card"><div id="groceries"></div></div>
+</section>
+<section id="stock" class="section">
+<div class="section-head"><h2>Stock alimentaire</h2><button onclick="addStock()">+ Ajouter</button></div>
+<div class="card"><div class="muted">Gardez un œil sur ce qu'il reste à la maison.</div><div id="stocks"></div></div>
+</section>
+<section id="recettes" class="section">
+<div class="section-head"><h2>Recettes favorites</h2><button onclick="addRecipe()">+ Recette</button></div>
+<div id="recipes"></div>
+</section>
+<section id="maison" class="section">
+<div class="section-head"><h2>Entretien maison</h2><button onclick="addProduct()">+ Produit</button></div>
+<div class="card"><b>Produits ménagers</b><div id="products"></div></div>
+<div class="card"><b>Tâches d'entretien</b><div id="houseTasks"></div><button class="btn secondary small" onclick="addHouseTask()">+ Tâche</button></div>
+</section>
+</main>
+<nav class="nav">
+<button class="active" data-page="home" onclick="show('home')"><span>⌂</span>Accueil</button>
+<button data-page="planning" onclick="show('planning')"><span>☷</span>Semaine</button>
+<button data-page="menus" onclick="show('menus')"><span>🍽</span>Menus</button>
+<button data-page="courses" onclick="show('courses')"><span>🛒</span>Courses</button>
+<button data-page="maison" onclick="show('maison')"><span>⌂</span>Maison</button>
+</nav>
+<script>
+const defaults={budget:120,tasks:[],meals:[],groceries:[],stocks:[],recipes:[],products:[],houseTasks:[]};
+let db={...defaults};try{db={...db,...JSON.parse(localStorage.getItem('maison-data')||'{}')}}catch(e){}
+function save(){localStorage.setItem('maison-data',JSON.stringify(db));render()}
+function show(id){document.querySelectorAll('.section').forEach(x=>x.classList.toggle('active',x.id===id));document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x.dataset.page===id));window.scrollTo(0,0);render()}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function line(text,sub='',checked=false,onchange='',del=''){return `<div class="item"><input type="checkbox" ${checked?'checked':''} ${onchange}><div class="grow ${checked?'done':''}"><b>${esc(text)}</b>${sub?`<div class="muted">${esc(sub)}</div>`:''}</div>${del}</div>`}
+function render(){
+ document.getElementById('tasks').innerHTML=db.tasks.map((x,i)=>line(x.name,`${x.day||'À planifier'} · ${x.who||'À deux'}`,x.done,`onchange="toggle('tasks',${i})"`,`<button class="btn secondary small" onclick="removeItem('tasks',${i})">×</button>`)).join('')||'<div class="empty">Aucune tâche pour le moment.</div>';
+ document.getElementById('meals').innerHTML=db.meals.map((x,i)=>`<div class="item"><div class="grow"><b>${esc(x.day)} · ${esc(x.type)}</b><div class="muted">${esc(x.name)}</div></div><button class="btn secondary small" onclick="removeItem('meals',${i})">×</button></div>`).join('')||'<div class="empty">Planifiez votre premier repas.</div>';
+ let spent=db.groceries.filter(x=>x.bought).reduce((a,x)=>a+Number(x.price||0),0);document.getElementById('budgetDisplay').textContent=db.budget;document.getElementById('spentText').textContent=spent.toFixed(2)+' CHF dépensé';document.getElementById('budgetBar').style.width=Math.min(100,spent/Math.max(1,db.budget)*100)+'%';
+ document.getElementById('groceries').innerHTML=db.groceries.map((x,i)=>line(x.name,`${x.category||'Divers'} · ${Number(x.price||0).toFixed(2)} CHF`,x.bought,`onchange="toggle('groceries',${i})"`,`<button class="btn secondary small" onclick="removeItem('groceries',${i})">×</button>`)).join('')||'<div class="empty">Votre liste est vide.</div>';
+ document.getElementById('stocks').innerHTML=db.stocks.map((x,i)=>`<div class="item"><div class="grow"><b>${esc(x.name)}</b><div class="muted">${esc(x.qty)} · ${x.exp? 'À utiliser avant le '+esc(x.exp):'Date non indiquée'}</div></div><button class="btn secondary small" onclick="removeItem('stocks',${i})">×</button></div>`).join('')||'<div class="empty">Aucun aliment enregistré.</div>';
+ document.getElementById('recipes').innerHTML=db.recipes.map((x,i)=>`<div class="card"><div class="row between"><b>♡ ${esc(x.name)}</b><button class="btn secondary small" onclick="removeItem('recipes',${i})">×</button></div><p class="muted">${esc(x.ingredients||'Ingrédients à compléter')}</p>${x.method?`<div>${esc(x.method)}</div>`:''}</div>`).join('')||'<div class="empty">Ajoutez vos recettes préférées.</div>';
+ document.getElementById('products').innerHTML=db.products.map((x,i)=>`<div class="item"><div class="grow"><b>${esc(x.name)}</b><div class="muted">Quantité : ${esc(x.qty)} · Seuil : ${esc(x.min)}</div></div><button class="btn secondary small" onclick="removeItem('products',${i})">×</button></div>`).join('')||'<div class="empty">Aucun produit enregistré.</div>';
+ document.getElementById('houseTasks').innerHTML=db.houseTasks.map((x,i)=>line(x.name,x.frequency,x.done,`onchange="toggle('houseTasks',${i})"`,`<button class="btn secondary small" onclick="removeItem('houseTasks',${i})">×</button>`)).join('')||'<div class="empty">Aucune tâche d'entretien.</div>';
+ let total=db.tasks.length,done=db.tasks.filter(x=>x.done).length;document.getElementById('progressText').textContent=`${done}/${total} tâches terminées`;document.getElementById('progressBar').style.width=(total?done/total*100:0)+'%';
+}
+function toggle(k,i){db[k][i].done=k==='groceries'?!db[k][i].bought:!db[k][i].done;if(k==='groceries')db[k][i].bought=!db[k][i].bought;save()}
+function removeItem(k,i){db[k].splice(i,1);save()}
+function ask(label,def=''){return prompt(label,def)}
+function addTask(){let name=ask('Quelle tâche faut-il faire ?');if(!name)return;db.tasks.push({name,day:ask('Quel jour ?','Cette semaine'),who:ask('Qui s’en occupe ?','À deux'),done:false});save()}
+function addMeal(){let day=ask('Quel jour ?','Lundi');if(!day)return;let type=ask('Déjeuner ou dîner ?','Dîner');let name=ask('Quel repas ?');if(name)db.meals.push({day,type,name});save()}
+function addGrocery(){let name=ask('Quel produit acheter ?');if(!name)return;let category=ask('Catégorie ?','Divers'),price=ask('Prix estimé en CHF ?','0');db.groceries.push({name,category,price,bought:false});save()}
+function setBudget(){let n=Number(ask('Budget courses en CHF ?',db.budget));if(n>=0){db.budget=n;save()}}
+function addStock(){let name=ask('Quel aliment ?');if(!name)return;let qty=ask('Quelle quantité ?','1');let exp=ask('Date limite (facultatif) ?','');db.stocks.push({name,qty,exp});save()}
+function addRecipe(){let name=ask('Nom de la recette ?');if(!name)return;let ingredients=ask('Ingrédients ?',''),method=ask('Préparation ?','');db.recipes.push({name,ingredients,method});save()}
+function addProduct(){let name=ask('Nom du produit ménager ?');if(!name)return;let qty=ask('Quantité restante ?','1'),min=ask('Seuil minimum ?','1');db.products.push({name,qty,min});save()}
+function addHouseTask(){let name=ask('Quelle tâche ménagère ?');if(!name)return;let frequency=ask('Fréquence ?','Chaque semaine');db.houseTasks.push({name,frequency,done:false});save()}
+document.getElementById('today').textContent=new Date().toLocaleDateString('fr-CH',{weekday:'long',day:'numeric',month:'long'});render();
+</script>
+</body></html>
